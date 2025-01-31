@@ -42,7 +42,7 @@ class Traker:
     if output is not None:
       out = cv2.VideoWriter(output, fourcc, 20.0, (frame.shape[1], frame.shape[0]))
     else:
-      out = cv2.VideoWriter('output.avi', fourcc, 20.0, (frame.shape[1], frame.shape[0]))
+      out = cv2.VideoWriter('./output.avi', fourcc, 20.0, (frame.shape[1], frame.shape[0]))
     
     print('[INFO] Processando vídeo...')
     if not only_frame:
@@ -67,7 +67,10 @@ class Traker:
     
     self.video.release()
     out.release()
-    cv2.destroyAllWindows()
+    try:
+      cv2.destroyAllWindows()
+    except:
+      pass
     print('[INFO] Vídeo processado com sucesso')
 
 if __name__ == "__main__":
