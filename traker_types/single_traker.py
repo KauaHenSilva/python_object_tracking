@@ -6,8 +6,9 @@ import sys
 class SingleTracker(ObjectTracker):
     def __init__(self, tracker_type, video_path):
         super().__init__(tracker_type, video_path)
+        self.tracker = self.create_tracker(tracker_type)
 
-    def _process_frame(self, frame):
+    def process_frame(self, frame):
       """
       Processa um único frame aplicando o algoritmo de rastreamento.
       
@@ -28,9 +29,9 @@ class SingleTracker(ObjectTracker):
       else:
           cv2.putText(frame, "Falha no rastreamento", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
-      return frame, success, bbox
+      return frame, success
 
-    def process_video(self, initial_bbox, output_path=None, single_frame=False):
+    def process_video(self, initial_bbox, output_path=None, frame_cont=None):
         """
         Executa o processamento completo do vídeo.
         
@@ -77,11 +78,13 @@ class SingleTracker(ObjectTracker):
             if not success:
                 break
 
-            processed_frame, tracking_success, _ = self.process_frame(frame)
+            processed_frame, tracking_success = self.process_frame(frame)
             video_writer.write(processed_frame)
             
-            if single_frame:
-                break
+            if frame_cont:
+                frame_cont -= 1
+                if frame_cont <= 0:
+                    break
 
         # Limpeza de recursos
         self.video.release()
@@ -125,9 +128,9 @@ if __name__ == "__main__":
     )
     
     parser.add_argument(
-        '--single-frame', 
-        action='store_true',
-        help='Processar apenas um frame para testes rápidos'
+        '--frame_cont', 
+        type=int,
+        help='Número de frames para processar'
     )
 
     args = parser.parse_args()
@@ -141,5 +144,5 @@ if __name__ == "__main__":
     tracker.process_video(
         initial_bbox=args.start_roi,
         output_path=args.output,
-        single_frame=args.single_frame
+        
     )

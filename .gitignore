@@ -4,3 +4,4 @@ arq
 arq.rar
 *.mp4
 *.avi
+__pycache__
