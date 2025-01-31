@@ -2,5 +2,5 @@
 arq.zip
 arq
 arq.rar
-output.mp4
-output.avi
+*.mp4
+*.avi
