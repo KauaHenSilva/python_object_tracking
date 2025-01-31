@@ -10,7 +10,7 @@ class SingleTracker(ObjectTracker):
         super().__init__(tracker_type, video_path)
         self.mult_tracker = cv2.legacy.MultiTracker.create()
 
-    def process_frame(self, frame):
+    def process_frame(self, frame, colors):
       """
       Processa um único frame aplicando o algoritmo de rastreamento.
       
@@ -25,9 +25,9 @@ class SingleTracker(ObjectTracker):
           fps_text = f"FPS: {int(1 / processing_time)}" if processing_time > 0 else "FPS: NONE"
           cv2.putText(frame, self.tracker_type, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
           cv2.putText(frame, fps_text, (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-          for bbox in bboxs:
+          for bbox, color in zip(bboxs, colors):
             x, y, w, h = [int(v) for v in bbox]
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
       else:
           cv2.putText(frame, "Falha no rastreamento", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
@@ -90,7 +90,7 @@ class SingleTracker(ObjectTracker):
             if not success:
                 break
 
-            processed_frame, tracking_success = self.process_frame(frame)
+            processed_frame, tracking_success = self.process_frame(frame, colors)
             video_writer.write(processed_frame)
             
             if frame_cont:
