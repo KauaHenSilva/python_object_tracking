@@ -6,7 +6,7 @@ Este repositório contém dois Jupyter Notebooks (`show_multi_tracker.ipynb` e `
 
 ## Notebooks
 
-### `show_multi_tracker.ipynb`
+### `show_multi_tracker.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KauaHenSilva/python_object_tracking_opencv/blob/main/show_multi_tracker.ipynb)
 
 **Funcionalidade:** Rastreamento de múltiplos objetos com suporte a cores dinâmicas para caixas delimitadoras.  
 
@@ -20,7 +20,7 @@ Este notebook demonstra o rastreamento de múltiplos objetos em vídeos utilizan
 
 ---
 
-### `show_single_tracker.ipynb`
+### `show_single_tracker.ipynb`  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KauaHenSilva/python_object_tracking_opencv/blob/main/show_single_tracker.ipynb)
 
 **Funcionalidade:** Rastreamento de único objeto com caixas delimitadoras.  
 
