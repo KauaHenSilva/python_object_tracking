@@ -1,26 +1,30 @@
 # Demonstrações de Rastreamento de Múltiplos e Únicos Objetos no Google Colab
 
-Este repositório contém dois Jupyter Notebooks (`show_multi_tracker.ipynb` e `show_single_tracker.ipynb`) que demonstram o rastreamento de múltiplos e únicos objetos utilizando caixas delimitadoras (bounding boxes) com suporte aprimorado para cores. Esses notebooks são otimizados para uso no **Google Colab**, permitindo que você execute e experimente os códigos diretamente na nuvem, sem a necessidade de configurar um ambiente local.
+Este repositório contém dois Jupyter Notebooks (`show_multi_tracker.ipynb` e `show_single_tracker.ipynb`) que demonstram o rastreamento de múltiplos e únicos objetos utilizando caixas delimitadoras (bounding boxes). Esses notebooks são otimizados para uso no **Google Colab**, permitindo que você execute e experimente os códigos diretamente na nuvem, sem a necessidade de configurar um ambiente local.
+
+---
 
 ## Notebooks
 
 ### `show_multi_tracker.ipynb`
 
-**Funcionalidade:** Aprimoramento do processamento de frames com suporte a cores para caixas delimitadoras  
+**Funcionalidade:** Rastreamento de múltiplos objetos com suporte a cores dinâmicas para caixas delimitadoras.  
 
-Este notebook demonstra o rastreamento de múltiplos objetos em frames de vídeo. A versão aprimorada inclui suporte a cores para as caixas delimitadoras, facilitando a distinção entre os diferentes objetos rastreados. As cores são atribuídas dinamicamente a cada objeto, melhorando a clareza visual e a experiência do usuário.
+Este notebook demonstra o rastreamento de múltiplos objetos em vídeos utilizando diferentes algoritmos de rastreamento disponíveis no OpenCV. Cada objeto rastreado recebe uma cor única para facilitar a distinção visual. O vídeo processado é exibido diretamente no notebook após a execução.
 
 #### Principais Funcionalidades:
 - Rastreamento de múltiplos objetos com caixas delimitadoras.
-- Processamento de frames aprimorado com suporte a cores.
-- Atribuição dinâmica de cores para melhor distinção dos objetos.
-- Pronto para execução no Google Colab.
+- Suporte a cores dinâmicas para melhor visualização.
+- Algoritmos de rastreamento suportados: BOOSTING, MIL, KCF, MOSSE e CSRT.
+- Visualização integrada no Google Colab.
+
+---
 
 ### `show_single_tracker.ipynb`
 
-**Funcionalidade:** Rastreamento de único objeto com caixas delimitadoras  
+**Funcionalidade:** Rastreamento de único objeto com caixas delimitadoras.  
 
-Este notebook foca no rastreamento de um único objeto em frames de vídeo. Ele utiliza caixas delimitadoras para destacar o objeto rastreado, com o acréscimo de suporte a cores para a caixa. Essa funcionalidade melhora a visualização do objeto em relação ao fundo.
+Este notebook foca no rastreamento de um único objeto em vídeos, utilizando caixas delimitadoras para destacar o objeto rastreado. É ideal para cenários onde o foco é monitorar um único alvo.
 
 #### Principais Funcionalidades:
 - Rastreamento de único objeto com caixas delimitadoras.
@@ -45,5 +49,13 @@ Para executar os notebooks no Google Colab, siga os passos abaixo:
 3. **Execute o Código:**
    - Conecte-se a um ambiente de execução clicando em `Conectar` (canto superior direito).
    - Execute as células do notebook sequencialmente para ver os resultados.
+
+4. **Teste com Outros Vídeos (Opcional):**
+   - Caso queira testar com seus próprios vídeos, use o seguinte código para fazer upload:
+     ```python
+     from google.colab import files
+     uploaded = files.upload()
+     ```
+   - Substitua o caminho do vídeo no notebook pelo arquivo enviado.
 
 ---
